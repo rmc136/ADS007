@@ -10,11 +10,11 @@ import domain.UnidadeMedida;
 
 public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 	
-	private CatalogoDescricaoCaracteristicas catalogoDc;
-	private CatalogoTiposSensor catalogoTs;
-	private CatalogoUnidades catalogoU;
+	private CatalogoDescricaoCaracteristicas catalogoDc = new CatalogoDescricaoCaracteristicas();
+	private CatalogoTiposSensor catalogoTs = new CatalogoTiposSensor();
+	private CatalogoUnidades catalogoU = new CatalogoUnidades();
 	private TipoSensor tipoSensor;
-	private String caracteristica;
+	private DescricaoCaracteristica caracteristica;
 	private UnidadeMedida unidade;
 	
 
@@ -26,11 +26,12 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
     }
 	@Override
 	public boolean criarCaracteristica(String desig) {
+		
 		if (catalogoDc.existeCaracteristica(desig)) {
 			return false;
 		}
 		DescricaoCaracteristica dc = new DescricaoCaracteristica(desig);
-		caracteristica = desig;
+		caracteristica = dc;
 		return true;
 	}
 
@@ -46,9 +47,8 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 		if(ts == null) {
 			return false;
 		}
-		DescricaoCaracteristica dc = catalogoDc.obtemCaracteristica(caracteristica);
 		tipoSensor = ts;
-		dc.associaTipoSensor(ts);
+		caracteristica.associaTipoSensor(ts);
 		return true;
 	}
 
@@ -64,23 +64,22 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 		if(uni == null) {
 			return false;
 		}
-		DescricaoCaracteristica dc = catalogoDc.obtemCaracteristica(caracteristica);
 		unidade = uni;
-		dc.defineUnidadeMedida(uni);
+		caracteristica.defineUnidadeMedida(uni);
 		return true;
 	}
 
 	@Override
 	public void confirmar() {
 		// TODO Auto-generated method stub
-		DescricaoCaracteristica dc = catalogoDc.obtemCaracteristica(caracteristica);
-		catalogoDc.adicionaCaracteristica(dc);
+		catalogoDc.adicionaCaracteristica(caracteristica);
 		
 	}
 
 	@Override
 	public void cancelar() {
 		// TODO Auto-generated method stub
+		
 		
 	}
 

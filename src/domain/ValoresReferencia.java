@@ -31,4 +31,14 @@ public class ValoresReferencia {
 			result = 1;
 		return result;
 	}
+	
+	public double regMin(double minimo) {
+		min = minimo;
+		return min;
+	}
+	
+	public double regMax(double maximo) {
+		max = maximo;
+		return max;
+	}
 }

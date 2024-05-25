@@ -56,4 +56,5 @@ public class CatalogoUtilizadores {
 	public Utilizador obtemUtilizador(String nome) {
 		return users.get(nome);
 	}
+	
 }
