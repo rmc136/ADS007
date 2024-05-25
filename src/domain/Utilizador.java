@@ -48,4 +48,14 @@ public abstract class Utilizador {
         return listaNomes;
 		
 	}
+
+	public boolean estaAssociado(Contexto ctx) {
+		// TODO Auto-generated method stub
+		for (Contexto contexto : contextosAssociado.values()) {
+            if (contexto.equals(ctx)) {
+                return true;
+            }
+        }
+        return false;
+	}
 }

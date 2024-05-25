@@ -31,5 +31,6 @@ public class Par<T1, T2> {
 	public T2 segundo(){
 		return second;
 	}
+	
 
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 import domain.interfaces.IRecolherDadosHandler;
@@ -124,6 +125,7 @@ public class RegisterReadingController extends AbstractAuthenticatedUseCaseContr
    		try {
 	   		if (cha != null && cuh.indicarCaracteristica(cha[0], cha[1])) {
 	   			String reading = readingField.getText();
+	   			System.out.println(reading);
 	   			data.add(new ConfigurationLine(cha[0], cha[1], reading));
 	   			Calendar c = Calendar.getInstance();
 	   			cuh.indicarLeitura(c.get(Calendar.YEAR), c.get(Calendar.MONTH), 

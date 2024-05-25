@@ -45,33 +45,44 @@ public class GoodPlaces implements IGoodPlaces {
 		return getAuthenticatedUser().getClass().getName().substring(7);
 	}
 
+	private Utilizador getAuthenticatedUser() {
+		String nome = SessionManager.getInstance().getAuthenticatedUser();
+		Utilizador uAut = catUser.obtemUtilizador(nome);
+		
+		return uAut;
+	}
+
 	@Override
 	public ILoginHandler obtemLoginHandler() {
-		// TODO Auto-generated method stub
-		return null;
+		LoginHandler h = new LoginHandler();
+		return h;
 	}
 
 	@Override
 	public ICriarCaracteristicaHandler obtemCriarCaracteristicaHandler() {
-		// TODO Auto-generated method stub
-		return null;
+		Utilizador uAut = getAuthenticatedUser();
+		CriarCaracteristicaHandler h = new CriarCaracteristicaHandler(catDescrCaract, catTiposSensor, catUnidades);
+		
+		return h;
 	}
 
 	@Override
 	public IRecolherDadosHandler obtemRecolherDadosHandler() {
-		// TODO Auto-generated method stub
-		return null;
+		Utilizador uAut = getAuthenticatedUser();
+		RecolherDadosHandler h = new RecolherDadosHandler(uAut, catContexts);
+		
+		return h;
 	}
 
 	@Override
 	public ILogoutHandler obtemLogoutHandler() {
-		// TODO Auto-generated method stub
-		return null;
+		LogoutHandler h = new LogoutHandler();
+		return h;
 	}
 
 	public CatalogoUnidades obtemCatalogoUnidades() {
 		// TODO Auto-generated method stub
-		return null;
+		return catUnidades;
 	}
 
 }
