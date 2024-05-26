@@ -2,21 +2,28 @@ package domain;
 
 import java.util.HashMap;
 import java.util.List;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Contexto {
+import domain.alertas.IEventoAlerta;
+
+public class Contexto implements PropertyChangeListener{
 	
 	private String designacao;
 	private Map<String,CaracteristicaContexto> carcons;
 	private CaracteristicaContexto corrente;
 	private PropertyChangeSupport change;
+	private PropertyChangeEvent property;
+	private PropertyChangeSupport support;
     // ...
 
 	public Contexto(String desig) {
 		carcons = new HashMap<>();
 		designacao = desig;
+		this.support = new PropertyChangeSupport(this);
 		// ...
 	}
 
@@ -44,6 +51,7 @@ public class Contexto {
 			if(key.equals(nome)) {
 				cc = carcons.get(key);
 				corrente = cc;
+				change = new PropertyChangeSupport(corrente);
 			}
 		}
 		if(cc == null) {
@@ -51,7 +59,6 @@ public class Contexto {
             
 		}else {
 			b1 = cc.definirUnidadeCorrenteLeitura(unidade);
-			System.out.println(b1);
 			result.put(cc, b1);
 
 		}		
@@ -75,22 +82,27 @@ public class Contexto {
 		}
 		return carUniList;
 	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener evt) {
+        support.addPropertyChangeListener(evt);
+    }
 
-	public void registarLeitura(int ano, int mes, int dia, double valor) {
+    public void removePropertyChangeListener(PropertyChangeListener evt) {
+        support.removePropertyChangeListener(evt);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getNewValue() instanceof IEventoAlerta) {
+            IEventoAlerta evento = (IEventoAlerta) evt.getNewValue();
+            evento.adicionaContexto(designacao);
+            support.firePropertyChange("alertaContexto", null, evento);
+        }
+    }
+
+	public void registarLeitura(int ano, int mes, int dia, double valor, String designacao) {
 		
-		String uni = corrente.abreviaturaUnidade(); 
-		Leitura l = new Leitura(ano,mes,dia,valor,uni);
-		ValoresReferencia valores = corrente.getValores();
-		corrente.addLeitura(l);
-		boolean k = valores.estahNoIntervalo(valor) == 0;
+		corrente.registarLeitura(ano, mes, dia,valor, designacao);
 		
-		if(k) {
-			int i = valores.estahNoIntervalo(valor);
-			if(i>0) {
-				change.firePropertyChange("acima", k, l);
-			}else {
-				change.firePropertyChange("abaixo", k, l);
-			}
-		}
 	}
 }

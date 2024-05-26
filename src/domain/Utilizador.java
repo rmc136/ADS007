@@ -1,11 +1,17 @@
 package domain;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Utilizador {
+import domain.alertas.AlertaAdapterFactory;
+import domain.alertas.IAlertaAdapter;
+import domain.alertas.IEventoAlerta;
+
+public abstract class Utilizador implements PropertyChangeListener{
 	
 	private String nome, pwd, email;
 	private Map<String,Contexto> contextosAssociado;
@@ -58,4 +64,13 @@ public abstract class Utilizador {
         }
         return false;
 	}
+	
+	@Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getNewValue() instanceof IEventoAlerta) {
+            IEventoAlerta evento = (IEventoAlerta) evt.getNewValue();
+            IAlertaAdapter alertaAdapter = AlertaAdapterFactory.getInstance().getAlertaAdapter();
+            alertaAdapter.enviaAlerta(this, evento);
+        }
+    }
 }

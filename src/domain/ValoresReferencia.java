@@ -37,6 +37,14 @@ public class ValoresReferencia {
 		return min;
 	}
 	
+	public double getMin() {
+		return min;
+	}
+	
+	public double getMax() {
+		return max;
+	}
+	
 	public double regMax(double maximo) {
 		max = maximo;
 		return max;
