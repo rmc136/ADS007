@@ -32,19 +32,37 @@ public class ValoresReferencia {
 		return result;
 	}
 	
+	/**
+	 * @author Nº 54600, Nº 60470, Nº 60859
+	 * @param minimo
+	 * @return minimo
+	 */
 	public double regMin(double minimo) {
 		min = minimo;
 		return min;
 	}
 	
+	/**
+	 * 
+	 * @return minimo
+	 */
 	public double getMin() {
 		return min;
 	}
 	
+	/**
+	 * 
+	 * @return maximo
+	 */
 	public double getMax() {
 		return max;
 	}
 	
+	/**
+	 * 
+	 * @param maximo
+	 * @return maximo
+	 */
 	public double regMax(double maximo) {
 		max = maximo;
 		return max;

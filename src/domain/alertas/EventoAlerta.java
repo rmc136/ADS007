@@ -1,5 +1,10 @@
 package domain.alertas;
 
+
+/**
+ * Classe que define EventoAlerta
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class EventoAlerta implements IEventoAlerta {
     private int ano;
     private int mes;
@@ -10,6 +15,17 @@ public class EventoAlerta implements IEventoAlerta {
     private String contexto;
     private String mensagem;
 
+    /**
+     * Construtor
+     * @param ano
+     * @param mes
+     * @param dia
+     * @param valor
+     * @param unidade
+     * @param caracteristica
+     * @param contexto
+     * @param mensagem
+     */
     public EventoAlerta(int ano, int mes, int dia, double valor, String unidade, String caracteristica, String contexto, String mensagem) {
         this.ano = ano;
         this.mes = mes;

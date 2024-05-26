@@ -32,7 +32,7 @@ public class TipoSensor {
 
 	/**
 	 * A designacao deste tipo de sensor
-	 * @return
+	 * @return designacao
 	 */
 	public String obtemDesignacao() {
 		return designacao;
@@ -49,6 +49,10 @@ public class TipoSensor {
 		return sensores.get(codigo);
 	}
 
+	/**
+	 * 
+	 * @return Lista com os nomes das unidades
+	 */
 	public Iterable<String> obtemNomesUnidades() {
 		// TODO Auto-generated method stub
 		List<String> unidades = new ArrayList<>();

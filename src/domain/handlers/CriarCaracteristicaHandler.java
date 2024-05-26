@@ -8,6 +8,10 @@ import domain.TipoSensor;
 import domain.CatalogoUnidades;
 import domain.UnidadeMedida;
 
+/**
+ * Classe que define CriarCaracteristicaHandler
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 	
 	private CatalogoDescricaoCaracteristicas catalogoDc = new CatalogoDescricaoCaracteristicas();
@@ -17,7 +21,12 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 	private DescricaoCaracteristica caracteristica;
 	private UnidadeMedida unidade;
 	
-
+	/**
+	 * Construtor
+	 * @param catalogoDc
+	 * @param catalogoTs
+	 * @param catalogoU
+	 */
     public CriarCaracteristicaHandler(CatalogoDescricaoCaracteristicas catalogoDc, CatalogoTiposSensor catalogoTs, CatalogoUnidades catalogoU) {
         this.catalogoDc = catalogoDc;
         this.catalogoTs = catalogoTs;
@@ -54,7 +63,6 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 
 	@Override
 	public Iterable<String> obterUnidadesMedida() {
-		//É PRECISO FAZER A FUNCAO List<String> obtemNomesUnidades() no TipoSensor que devolve as Unidades de Medida de todos os sensores daquele tipo?
 		return tipoSensor.obtemNomesUnidades();
 	}
 
@@ -71,15 +79,12 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 
 	@Override
 	public void confirmar() {
-		// TODO Auto-generated method stub
 		catalogoDc.adicionaCaracteristica(caracteristica);
 		
 	}
 
 	@Override
-	public void cancelar() {
-		// TODO Auto-generated method stub
-		
+	public void cancelar() {		
 		
 	}
 
