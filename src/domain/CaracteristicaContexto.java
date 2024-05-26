@@ -75,6 +75,7 @@ public class CaracteristicaContexto {
 			Leitura l = new Leitura(ano,mes,dia,valor,uni);
 			ValoresReferencia valores = getValores();
 			
+			
 			addLeitura(l);
 			boolean k = valores.estahNoIntervalo(valor) == 0;
 
