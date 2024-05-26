@@ -33,6 +33,7 @@ public class CatalogoContextos {
 	    Sensor sens = tsCorr.obtemSensor("Ter01");
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(18, 22);
+	    carCont.addPropertyChangeListener(cont);
 	    cont.adicionaCaracteristica(carCont);
 		// Adiciona-lhe outra caracteristica
 		carac = catCars.obtemCaracteristica("Volume de Som");
@@ -42,13 +43,21 @@ public class CatalogoContextos {
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(0, 70);
 	    cont.adicionaCaracteristica(carCont);
+        carCont.addPropertyChangeListener(cont);
+
 	    
 	    // Associa este contexto a dois tecnicos e um gestor
 	    Utilizador usr = catUsers.obtemUtilizador("Gestor1");
+        cont.addPropertyChangeListener(usr);
+
 	    usr.ficasAssociado(cont);
 	    usr = catUsers.obtemUtilizador("Tecnico1");
+        cont.addPropertyChangeListener(usr);
+
 	    usr.ficasAssociado(cont);
 	    usr = catUsers.obtemUtilizador("Tecnico2");
+        cont.addPropertyChangeListener(usr);
+
 	    usr.ficasAssociado(cont);
 	    
 	    this.adicionaContexto(cont);
@@ -63,6 +72,8 @@ public class CatalogoContextos {
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(12, 18);
 	    cont.adicionaCaracteristica(carCont);
+        carCont.addPropertyChangeListener(cont);
+
 	    
 	    // Associa este contexto a um tecnico
 	    usr = catUsers.obtemUtilizador("Tecnico2");
