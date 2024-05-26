@@ -47,7 +47,6 @@ public class RecolherDadosHandler implements IRecolherDadosHandler{
 		
 		Map<CaracteristicaContexto, Object> b = ctx.definirCaractUniCorrente(nome, unidade);
 	    
-		System.out.println(b);
 	    if (b != null && !b.isEmpty()) {
 	        Map.Entry<CaracteristicaContexto, Object> entry = b.entrySet().iterator().next();
 	        cc = entry.getKey();
@@ -78,7 +77,7 @@ public class RecolherDadosHandler implements IRecolherDadosHandler{
 	public void indicarLeitura(int ano, int mes, int dia, double valor) {
 		// TODO Auto-generated method stub
 		
-		ctx.registarLeitura(ano, mes, dia, valor);
+		ctx.registarLeitura(ano, mes, dia, valor, ctx.obtemDesignacao());
 		
 	}
 
