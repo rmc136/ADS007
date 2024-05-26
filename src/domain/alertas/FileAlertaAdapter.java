@@ -6,11 +6,15 @@ import java.io.IOException;
 
 import domain.Utilizador;
 
+
+/**
+ * Classe que define FileAlertaAdapter
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class FileAlertaAdapter implements IAlertaAdapter{
 
 	@Override
 	public void enviaAlerta(Utilizador u, IEventoAlerta ev) {
-		// TODO Auto-generated method stub
 		String fileName = u.obtemNome() + ".txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             writer.write("Alerta para o utilizador: " + u.obtemNome() + "\n");

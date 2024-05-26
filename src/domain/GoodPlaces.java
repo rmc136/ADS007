@@ -44,7 +44,11 @@ public class GoodPlaces implements IGoodPlaces {
 	public String obtemTipoUserAutenticado() {
 		return getAuthenticatedUser().getClass().getName().substring(7);
 	}
-
+	
+	/**
+	 * @author Nº 54600, Nº 60470, Nº 60859
+	 * @return o user autenticado
+	 */
 	private Utilizador getAuthenticatedUser() {
 		String nome = SessionManager.getInstance().getAuthenticatedUser();
 		Utilizador uAut = catUser.obtemUtilizador(nome);
@@ -80,9 +84,13 @@ public class GoodPlaces implements IGoodPlaces {
 		return h;
 	}
 
+	/**
+	 * 
+	 * @return catalogo de Unidades
+	 */
 	public CatalogoUnidades obtemCatalogoUnidades() {
-		// TODO Auto-generated method stub
 		return catUnidades;
 	}
-
+	
+	
 }

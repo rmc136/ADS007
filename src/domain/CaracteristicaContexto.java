@@ -7,6 +7,10 @@ import java.util.List;
 
 import domain.alertas.EventoAlerta;
 
+/**
+ * Classe que define CaracteristicaContexto
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class CaracteristicaContexto {
 	
 	private DescricaoCaracteristica carac;
@@ -14,62 +18,102 @@ public class CaracteristicaContexto {
 	private List<Leitura> leituras = new ArrayList<>();
 	private PropertyChangeSupport support;
 	
+	/**
+	 * Construtor
+	 * @param carac
+	 */
 	public CaracteristicaContexto(DescricaoCaracteristica carac) {
 		this.carac = carac;
 		this.support = new PropertyChangeSupport(this);
 		
 	}
 	
+	/**
+	 * 
+	 * @param evt
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener evt) {
         support.addPropertyChangeListener(evt);
     }
 
+	/**
+	 * 
+	 * @param evt
+	 */
     public void removePropertyChangeListener(PropertyChangeListener evt) {
         support.removePropertyChangeListener(evt);
     }
 
 	public void associaSensor(Sensor sens) {
-		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @param j
+	 */
 	public void registaValoresRef(int i, int j) {
 		valores.regMin(i);
 		valores.regMax(j);
 	}
 
+	/**
+	 * 
+	 * @return nome da Caracteristica
+	 */
 	public String nomeCaracteristica() {
-		// TODO Auto-generated method stub
 		return carac.obtemDesignacao();
 	}
 
 	public void addObserver(Contexto contexto) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * 
+	 * @param unidade
+	 * @return verifica se é essa a unidade de medida
+	 */
 	public boolean definirUnidadeCorrenteLeitura(String unidade) {
-		// TODO Auto-generated method stub
 		String abrev = carac.obtemAbrevitaturaUnidade();
 		return unidade.equals(abrev);
 	}
-
+	
+	/**
+	 * 
+	 * @return abreviatura da UnidadeMedida
+	 */
 	public String abreviaturaUnidade() {
-		// TODO Auto-generated method stub
 		return carac.obtemAbrevitaturaUnidade();
 	}
 	
+	/**
+	 * 
+	 * @return valores
+	 */
 	public ValoresReferencia getValores() {
 		return valores;
 	};
 	
+	/**
+	 * 
+	 * @param leitura
+	 * adiciona leitura
+	 */
 	public void addLeitura(Leitura leitura) {
 		leituras.add(leitura);
 	}
 
-	public void registarLeitura(int ano, int mes, int dia, double valor, String contexto) {
-		// TODO Auto-generated method stub
-			
+	/**
+	 * 
+	 * @param ano
+	 * @param mes
+	 * @param dia
+	 * @param valor
+	 * @param contexto
+	 * regista leitura
+	 */
+	public void registarLeitura(int ano, int mes, int dia, double valor, String contexto) {			
 			
 			String uni = abreviaturaUnidade(); 
 			Leitura l = new Leitura(ano,mes,dia,valor,uni);

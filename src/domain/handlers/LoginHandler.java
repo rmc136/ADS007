@@ -5,6 +5,10 @@ import domain.Utilizador;
 import domain.interfaces.ILoginHandler;
 import services.SessionManager;
 
+/**
+ * Classe que define LoginHandler
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class LoginHandler implements ILoginHandler{
 	
 	private CatalogoUtilizadores usersC = new CatalogoUtilizadores();

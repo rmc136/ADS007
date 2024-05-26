@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Classe que define AlertaAdapterFactory
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class AlertaAdapterFactory {
     private static AlertaAdapterFactory instance;
     private IAlertaAdapter alertaAdapter;
 
+    
     private AlertaAdapterFactory() {
         Properties properties = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("configuracao.properties")) {
@@ -31,6 +36,10 @@ public class AlertaAdapterFactory {
         }
     }
 
+    /**
+     * 
+     * @return instancia de AlertaAdapterFactory
+     */
     public static AlertaAdapterFactory getInstance() {
         if (instance == null) {
             instance = new AlertaAdapterFactory();
@@ -38,6 +47,10 @@ public class AlertaAdapterFactory {
         return instance;
     }
 
+    /**
+     * 
+     * @return alertaAdapter
+     */
     public IAlertaAdapter getAlertaAdapter() {
         return alertaAdapter;
     }

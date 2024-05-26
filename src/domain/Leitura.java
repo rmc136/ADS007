@@ -1,5 +1,9 @@
 package domain;
 
+/**
+ * Classe que define Leitura
+ * @author Nº 54600, Nº 60470, Nº 60859
+ */
 public class Leitura {
 
 	private int ano;
@@ -8,7 +12,14 @@ public class Leitura {
 	private double valor;
 	private String uni;
 	
-	
+	/**
+	 * Construtor
+	 * @param ano
+	 * @param mes
+	 * @param dia
+	 * @param valor
+	 * @param uni
+	 */
 	public Leitura(int ano, int mes, int dia, double valor, String uni) {
 		
 		this.ano = ano;
