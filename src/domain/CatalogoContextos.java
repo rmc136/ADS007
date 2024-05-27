@@ -33,6 +33,7 @@ public class CatalogoContextos {
 	    Sensor sens = tsCorr.obtemSensor("Ter01");
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(18, 22);
+	    // Cria um PropertyChangeListener para o CaracteristicaContexto com o contexto
 	    carCont.addPropertyChangeListener(cont);
 	    cont.adicionaCaracteristica(carCont);
 		// Adiciona-lhe outra caracteristica
@@ -43,19 +44,23 @@ public class CatalogoContextos {
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(0, 70);
 	    cont.adicionaCaracteristica(carCont);
+	    // Cria um PropertyChangeListener para o CaracteristicaContexto com o contexto
         carCont.addPropertyChangeListener(cont);
 
 	    
 	    // Associa este contexto a dois tecnicos e um gestor
 	    Utilizador usr = catUsers.obtemUtilizador("Gestor1");
+	    // Cria um PropertyChangeListener para o contexto com o usr
         cont.addPropertyChangeListener(usr);
 
 	    usr.ficasAssociado(cont);
 	    usr = catUsers.obtemUtilizador("Tecnico1");
+	    // Cria um PropertyChangeListener para o contexto com o usr
         cont.addPropertyChangeListener(usr);
 
 	    usr.ficasAssociado(cont);
 	    usr = catUsers.obtemUtilizador("Tecnico2");
+	    // Cria um PropertyChangeListener para o contexto com o usr
         cont.addPropertyChangeListener(usr);
 
 	    usr.ficasAssociado(cont);
@@ -72,12 +77,14 @@ public class CatalogoContextos {
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(12, 18);
 	    cont.adicionaCaracteristica(carCont);
+	    // Cria um PropertyChangeListener para o CaracteristicaContexto com o contexto
         carCont.addPropertyChangeListener(cont);
 
 	    
 	    // Associa este contexto a um tecnico
 	    usr = catUsers.obtemUtilizador("Tecnico2");
 	    usr.ficasAssociado(cont);
+	    // Cria um PropertyChangeListener para o contexto com o usr.
 	    cont.addPropertyChangeListener(usr);
 	    
 	    this.adicionaContexto(cont);
