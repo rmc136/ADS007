@@ -78,6 +78,7 @@ public class CatalogoContextos {
 	    // Associa este contexto a um tecnico
 	    usr = catUsers.obtemUtilizador("Tecnico2");
 	    usr.ficasAssociado(cont);
+	    cont.addPropertyChangeListener(usr);
 	    
 	    this.adicionaContexto(cont);
 	}
